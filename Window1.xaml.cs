@@ -40,6 +40,7 @@ namespace TicTacToe_ver_3._0
 
         private void PlayAgain_Click(object sender, RoutedEventArgs e)
         {
+            
             this.Close();
         }
     }

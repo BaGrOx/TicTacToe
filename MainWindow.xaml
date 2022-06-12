@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TicTacToe_ver_3._0"
         mc:Ignorable="d"
         ResizeMode="NoResize"
-        Title="MainWindow" Height="550" Width="550" WindowStartupLocation="CenterScreen">
+        Title="MainWindow" Height="550" Width="550" WindowStartupLocation="CenterScreen" WindowStyle="None">
 
     <Window.Resources>
         <Style TargetType="{x:Type Button}">
@@ -28,9 +28,10 @@
 
         <!--Score table-->
         <Label x:Name="Player1"  Content="Player 1" HorizontalAlignment="Left" Grid.Column="1" Grid.Row="0" FontSize="30" Width="160" HorizontalContentAlignment="Left"/>
-        <Label x:Name="Player2" Content="Player 2" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="0" FontSize="30" Width="160" HorizontalContentAlignment="Left"/>
+        <Label x:Name="Player2"  Content="Player 2" HorizontalAlignment="Right" Grid.Column="1" Grid.Row="0" FontSize="30" Width="160" HorizontalContentAlignment="Left"/>
         <Label x:Name="ScorePl1" Content="0" HorizontalAlignment="Center" HorizontalContentAlignment="Left" Grid.Column="1" Grid.Row="0" FontSize="30" Width="79"/>
         <Label x:Name="ScorePl2" Content="0" HorizontalAlignment="Center" HorizontalContentAlignment="Right" Grid.Column="1" Grid.Row="0" FontSize="30" Width="79"/>
+        
 
         <!--Button to PvP-->
         <Button x:Name="PvP" Click="PvP_Click" Grid.Column="0" Grid.Row="2" Width="75" Height="80" VerticalAlignment="Top" Margin="0,30,0,0" Background="LightYellow">
@@ -86,7 +87,9 @@
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
 
-            <Button x:Name="btn00"  IsEnabled="False" Click="btn_Click"  Content="" Grid.Column="0" Grid.Row="0" IsDefault="True"/>
+
+
+            <Button x:Name="btn00"  IsEnabled="False"  Click="btn_Click"  Content="" Grid.Column="0" Grid.Row="0"/>
             <Button x:Name="btn01"  IsEnabled="False"  Click="btn_Click" Content="" Grid.Column="1" Grid.Row="0"/>
             <Button x:Name="btn02"  IsEnabled="False"  Click="btn_Click" Content="" Grid.Column="2" Grid.Row="0"/>
 
@@ -97,9 +100,6 @@
             <Button x:Name="btn20"  IsEnabled="False"  Click="btn_Click" Content="" Grid.Column="0" Grid.Row="2"/>
             <Button x:Name="btn21"  IsEnabled="False"  Click="btn_Click" Content="" Grid.Column="1" Grid.Row="2"/>
             <Button x:Name="btn22"  IsEnabled="False"  Click="btn_Click" Content="" Grid.Column="2" Grid.Row="2"/>
-
-           
-            
 
         </Grid>
     </Grid>
