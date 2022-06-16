@@ -14,38 +14,47 @@ namespace TicTacToe_ver_3._0
         public MainWindow()
         {
             InitializeComponent();
-
-            
         }
 
-
         List<Button> buttons;
-        bool playComputer = false;
-        bool turnPlayer = false;
+        bool turnComputer = false;
+        bool turnPlayer;
         public int counter = 0;
         int resultPlayer1 = 0, resultPlayer2 = 0;
 
+        enum Player
+        {
+            Player1,
+            Player2,
+            Computer,
+            X,
+            O
+        }
         private void PvP_Click(object sender, RoutedEventArgs e)
         {
 
             NewGame();
-            playComputer = false;
-            Player2.Content = "Player 2";
+            turnComputer = false;
+            Player1.Content = Player.Player1;
+            Player2.Content = Player.Player2;
+            SetScore();
+
         }
+
 
         private void PvE_Click(object sender, RoutedEventArgs e)
         {
 
             NewGame();
-            playComputer = true;
-            Player2.Content = "Computer";
-
+            turnComputer = true;
+            Player1.Content = Player.Player1;
+            Player2.Content = Player.Computer;
+            SetScore();
         }
         private void RestartGame_Click(object sender, RoutedEventArgs e)
         {
             NewGame();
-            resultPlayer1 = 0;
-            resultPlayer2 = 0;
+            SetScore();
         }
         private void CloseApp_Click(object sender, RoutedEventArgs e)
         {
@@ -62,37 +71,40 @@ namespace TicTacToe_ver_3._0
             var button = sender as Button;
             turnPlayer ^= true;
 
-            if (playComputer)
+            if (turnComputer)
             {
-               
+
                 if (button.Content == string.Empty)
                 {
-                    button.Content = "X";
+
+                    button.Content = Player.X;
                     counter++;
                     CheckOptions();
-                    DispatcherTime();
+                    TurnComputer();
                     CheckOptions();
                 }
+
             }
 
             else
             {
                 if (button.Content == string.Empty)
                 {
-                    button.Content = turnPlayer ? "X" : "O";
+                    button.Content = turnPlayer ? Player.X : Player.O;
                     counter++;
                     CheckOptions();
-                    
+
                 }
 
             }
         }
 
         //Turn Computer
-        private bool DispatcherTime()
+        private bool TurnComputer()
         {
+
             DispatcherTimer timer = new DispatcherTimer();
-            var turnComputer = new Class2();
+            var turnComputer = new TurnComputer();
             timer.Start();
             if (turnComputer.AIGame(buttons)) { counter++; timer.Stop(); return true; }
             else { timer.Stop(); return false; }
@@ -138,12 +150,14 @@ namespace TicTacToe_ver_3._0
                     turnPlayer = true;
                     return true;
                 }
+
             }
             else { return false; }
         }
 
         private void CheckOptions()
         {
+
             if (Win(btn00, btn01, btn02)) { EndGame(); }
             else if (Win(btn10, btn11, btn12)) { EndGame(); }
             else if (Win(btn20, btn21, btn22)) { EndGame(); }
@@ -152,8 +166,23 @@ namespace TicTacToe_ver_3._0
             else if (Win(btn02, btn12, btn22)) { EndGame(); }
             else if (Win(btn00, btn11, btn22)) { EndGame(); }
             else if (Win(btn02, btn11, btn20)) { EndGame(); }
-            else if (counter == 9) { turnPlayer = true; NewGame(); }
+            else if (counter == 9)
+            {
+                if (turnPlayer == true)
+                {
+                    turnPlayer = true;
+                }
+                else { turnPlayer = false; }
+                NewGame();
+            }
         }
+
+        public void SetScore()
+        {
+            ScorePl1.Content = "0";
+            ScorePl2.Content = "0";
+        }
+
     }
 }
 

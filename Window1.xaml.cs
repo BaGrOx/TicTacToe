@@ -26,6 +26,8 @@ namespace TicTacToe_ver_3._0
             InitializeComponent();
         }
 
+        
+            
         private void NewGame_Click(object sender, RoutedEventArgs e)
         {
             Process.Start(Application.ResourceAssembly.Location);

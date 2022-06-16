@@ -7,9 +7,14 @@ using System.Windows.Controls;
 
 namespace TicTacToe_ver_3._0
 {
-    public class Class2 : MainWindow
+    public class TurnComputer : MainWindow
     {
-       
+        enum ContentPLayer
+        { 
+            X,
+            O
+        }
+
         public bool AIGame(List<Button> buttonList)
         {
             
@@ -36,17 +41,15 @@ namespace TicTacToe_ver_3._0
                 else if (CheckBlockPlayer(buttonList[2], buttonList[4], buttonList[6])) { return true; }
                 else
                 {
-                    start:
-                    int index = randomNumer.Next(buttonList.Count());
-                        if(buttonList[index].Content == string.Empty)
+                    while (true)
+                    {
+                        int index = randomNumer.Next(buttonList.Count());
+                        if (buttonList[index].Content == string.Empty)
                         {
-                            buttonList[index].Content = "O";
+                            buttonList[index].Content = ContentPLayer.O;
                             return true;
                         }
-                        else
-                        {
-                            goto start;
-                        }
+                    }
                     
                 }
             }
@@ -58,17 +61,17 @@ namespace TicTacToe_ver_3._0
         {
             if (btA.Content == "X" && btA.Content == btB.Content && btA.Content != string.Empty && btB.Content != string.Empty && btC.Content == string.Empty)
             {
-                btC.Content = "O";
+                btC.Content = ContentPLayer.O;
                 return true;
             }
             else if (btA.Content == "X" && btA.Content == btC.Content && btA.Content != string.Empty && btC.Content != string.Empty && btB.Content == string.Empty)
             {
-                btB.Content = "O";
+                btB.Content = ContentPLayer.O;
                 return true;
             }
             else if (btC.Content == "X" && btC.Content == btB.Content && btC.Content != string.Empty && btB.Content != string.Empty && btA.Content == string.Empty)
             {
-                btA.Content = "O";
+                btA.Content = ContentPLayer.O;
                 return true;
             }
             else { return false; }
@@ -78,17 +81,17 @@ namespace TicTacToe_ver_3._0
         {
             if (btA.Content == "O" && btA.Content == btB.Content && btA.Content != string.Empty && btB.Content != string.Empty && btC.Content == string.Empty)
             {
-                btC.Content = "O";
+                btC.Content = ContentPLayer.O;
                 return true;
             }
             else if (btA.Content == "O" && btA.Content == btC.Content && btA.Content != string.Empty && btC.Content != string.Empty && btB.Content == string.Empty)
             {
-                btB.Content = "O";
+                btB.Content = ContentPLayer.O;
                 return true;
             }
             else if (btC.Content == "O" && btC.Content == btB.Content && btC.Content != string.Empty && btB.Content != string.Empty && btA.Content == string.Empty)
             {
-                btA.Content = "O";
+                btA.Content = ContentPLayer.O;
                 return true;
             }
             else { return false; }
